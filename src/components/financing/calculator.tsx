@@ -154,46 +154,46 @@ export function FinancingCalculator({
 
       {/* Outputs / Calculations */}
       <div className={embed ? "" : "lg:col-span-1"}>
-        <div className="bg-muted/40 border border-border/50 rounded-2xl p-6 space-y-6">
-          <div className="text-center pb-4 border-b">
-            <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+        <div className="bg-brand-900 text-white border border-brand-800 rounded-2xl p-6 space-y-6 shadow-lg shadow-brand-950/10">
+          <div className="text-center pb-4 border-b border-brand-800/80">
+            <p className="text-xs text-brand-200 uppercase font-bold tracking-wider">
               Estimated Payment
             </p>
-            <p className="text-4xl font-heading font-bold text-foreground mt-1">
+            <p className="text-4xl font-heading font-bold text-white mt-1">
               {formatPrice(monthlyPayment)}
-              <span className="text-sm text-muted-foreground font-normal">/mo</span>
+              <span className="text-sm text-brand-300 font-normal">/mo</span>
             </p>
           </div>
 
           <div className="space-y-3 text-sm">
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Amount Financed</span>
-              <span className="font-semibold text-foreground">
+              <span className="text-brand-200">Amount Financed</span>
+              <span className="font-semibold text-white">
                 {formatPrice(Math.max(0, price - downPayment - tradeIn))}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Total Interest</span>
-              <span className="font-semibold text-foreground">{formatPrice(totalInterest)}</span>
+              <span className="text-brand-200">Total Interest</span>
+              <span className="font-semibold text-white">{formatPrice(totalInterest)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Total Cost</span>
-              <span className="font-semibold text-foreground">{formatPrice(totalCost)}</span>
+              <span className="text-brand-200">Total Cost</span>
+              <span className="font-semibold text-white">{formatPrice(totalCost)}</span>
             </div>
           </div>
 
           {!embed && (
-            <div className="pt-4 border-t space-y-4">
-              <h4 className="font-semibold text-sm text-foreground">Get Pre-Qualified</h4>
+            <div className="pt-4 border-t border-brand-800/80 space-y-4">
+              <h4 className="font-semibold text-sm text-white">Get Pre-Qualified</h4>
               <form onSubmit={handlePrequalify} className="space-y-3">
-                <Input required placeholder="First & Last Name" className="h-9 rounded-lg" />
-                <Input required type="email" placeholder="Email Address" className="h-9 rounded-lg" />
-                <Input required type="tel" placeholder="Phone Number" className="h-9 rounded-lg" />
-                <Button type="submit" className="w-full bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-xs font-semibold gap-1">
+                <Input required placeholder="First & Last Name" className="h-9 rounded-lg bg-brand-950/40 border-brand-800 text-white placeholder:text-brand-400 focus-visible:ring-brand-500" />
+                <Input required type="email" placeholder="Email Address" className="h-9 rounded-lg bg-brand-950/40 border-brand-800 text-white placeholder:text-brand-400 focus-visible:ring-brand-500" />
+                <Input required type="tel" placeholder="Phone Number" className="h-9 rounded-lg bg-brand-950/40 border-brand-800 text-white placeholder:text-brand-400 focus-visible:ring-brand-500" />
+                <Button type="submit" className="w-full bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-xs font-semibold gap-1 border-none">
                   Apply for Pre-Qualification <ArrowRight className="h-3 w-3" />
                 </Button>
               </form>
-              <p className="text-[10px] text-muted-foreground text-center leading-normal">
+              <p className="text-[10px] text-brand-300 text-center leading-normal">
                 *Pre-qualification is an estimate only and does not guarantee financing terms. Rates and limits depend on actual credit bureau reports.
               </p>
             </div>
