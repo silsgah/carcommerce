@@ -111,7 +111,7 @@ const DEMO_VEHICLES: VehicleCardData[] = [
     condition: "CERTIFIED", status: "AVAILABLE", isNewArrival: false, isPriceDrop: true, previousPrice: 59900,
     horsepower: 246, mpgCity: 37, mpgHighway: 34, engineInfo: "2.5L Hybrid I4",
     features: ["Mark Levinson Audio", "Panoramic Roof", "Digital Rearview Mirror"],
-    images: ["https://images.unsplash.com/photo-1625231334695-19dc14eded3b?w=800&h=600&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&h=600&fit=crop"],
   },
   {
     id: "v12", slug: "2024-chevrolet-corvette-stingray", make: "Chevrolet", model: "Corvette", trim: "Stingray 3LT",
