@@ -1,14 +1,15 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useState, useEffect, useTransition } from "react";
 import { FilterSidebar } from "@/components/inventory/filter-sidebar";
 import { SortControls } from "@/components/inventory/sort-controls";
 import { VehicleCard, type VehicleCardData } from "@/components/inventory/vehicle-card";
 import { Pagination } from "@/components/inventory/pagination";
 import { parseFilters, ITEMS_PER_PAGE } from "@/lib/inventory-filters";
-import { SearchX } from "lucide-react";
+import { SearchX, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 // Demo vehicles data (will be replaced by DB queries)
@@ -92,7 +93,7 @@ const DEMO_VEHICLES: VehicleCardData[] = [
     condition: "USED", status: "AVAILABLE", isNewArrival: false, isPriceDrop: false,
     horsepower: 315, mpgCity: 22, mpgHighway: 28, engineInfo: "2.0L Turbo I4",
     features: ["Rev Match Control", "Brembo Brakes", "Limited Slip Differential"],
-    images: ["https://images.unsplash.com/photo-1679239872589-e0040e498998?w=800&h=600&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&h=600&fit=crop"],
   },
   {
     id: "v10", slug: "2024-hyundai-ioniq-5-limited", make: "Hyundai", model: "IONIQ 5", trim: "Limited AWD",
@@ -101,7 +102,7 @@ const DEMO_VEHICLES: VehicleCardData[] = [
     condition: "NEW", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
     horsepower: 320, mpgCity: null, mpgHighway: null, engineInfo: "Dual Motor Electric",
     features: ["Vehicle-to-Load", "Augmented Reality HUD", "Relaxation Seats"],
-    images: ["https://images.unsplash.com/photo-1702487424125-04be398f3a5a?w=800&h=600&fit=crop"],
+    images: ["https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=600&fit=crop"],
   },
   {
     id: "v11", slug: "2023-lexus-rx-350h", make: "Lexus", model: "RX", trim: "350h F Sport",
@@ -159,35 +160,112 @@ function filterVehicles(vehicles: VehicleCardData[], searchParams: Record<string
 }
 
 export function InventoryContent() {
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
+
   const params = Object.fromEntries(searchParams.entries());
   const { filtered, filters } = filterVehicles(DEMO_VEHICLES, params);
 
-  const makes = [...new Set(DEMO_VEHICLES.map(v => v.make))].sort();
+  const [searchVal, setSearchVal] = useState(filters.q || "");
+
+  useEffect(() => {
+    setSearchVal(filters.q || "");
+  }, [filters.q]);
+
+  const handleSearchSubmit = (val: string) => {
+    const nextParams = new URLSearchParams(searchParams.toString());
+    if (val.trim()) {
+      nextParams.set("q", val.trim());
+    } else {
+      nextParams.delete("q");
+    }
+    nextParams.delete("page");
+    startTransition(() => {
+      router.push(`${pathname}?${nextParams.toString()}`, { scroll: false });
+    });
+  };
+
+  const clearSearch = () => {
+    setSearchVal("");
+    handleSearchSubmit("");
+  };
+
+  const makes = [...new Set(DEMO_VEHICLES.map((v) => v.make))].sort();
   const activeFilterCount = [
-    filters.make, filters.bodyType, filters.fuelType, filters.transmission,
-    filters.drivetrain, filters.condition, filters.yearMin, filters.yearMax,
-    filters.priceMin, filters.priceMax, filters.mileageMax, filters.q,
+    filters.make,
+    filters.bodyType,
+    filters.fuelType,
+    filters.transmission,
+    filters.drivetrain,
+    filters.condition,
+    filters.yearMin,
+    filters.yearMax,
+    filters.priceMin,
+    filters.priceMax,
+    filters.mileageMax,
+    filters.q,
   ].filter(Boolean).length;
 
   const page = filters.page || 1;
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-  const paginated = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+  const paginated = filtered.slice(
+    (page - 1) * ITEMS_PER_PAGE,
+    page * ITEMS_PER_PAGE
+  );
   const view = filters.view || "grid";
 
   return (
-    <div className="flex gap-8">
-      <FilterSidebar filters={filters} makes={makes} activeCount={activeFilterCount} />
+    <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+      {/* Desktop-only sidebar */}
+      <FilterSidebar
+        filters={filters}
+        makes={makes}
+        activeCount={activeFilterCount}
+        mode="desktop"
+      />
 
-      <div className="flex-1 min-w-0">
-        {/* Mobile filter + sort row */}
-        <div className="flex items-center gap-3 mb-6 lg:mb-0">
-          <div className="lg:hidden">
-            <FilterSidebar filters={filters} makes={makes} activeCount={activeFilterCount} />
+      <div className="flex-1 min-w-0 space-y-6">
+        {/* Top search & sorting toolbar */}
+        <div className="bg-card border border-border/60 rounded-2xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+          {/* Search bar + Mobile filters */}
+          <div className="flex items-center gap-3 flex-1 w-full max-w-lg">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSearchSubmit(searchVal);
+              }}
+              className="relative flex-1"
+            >
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Search by make, model, or keywords..."
+                value={searchVal}
+                onChange={(e) => setSearchVal(e.target.value)}
+                className="pl-9 pr-8 h-9 rounded-xl text-sm w-full bg-surface-secondary border-none"
+              />
+              {searchVal && (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              )}
+            </form>
+
+            <FilterSidebar
+              filters={filters}
+              makes={makes}
+              activeCount={activeFilterCount}
+              mode="mobile"
+            />
           </div>
-        </div>
 
-        <div className="mb-6">
+          {/* Sorting / View Toggles */}
           <SortControls
             totalCount={filtered.length}
             currentSort={filters.sort || "newest"}
@@ -196,7 +274,7 @@ export function InventoryContent() {
         </div>
 
         {paginated.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
+          <div className="flex flex-col items-center justify-center py-20 text-center bg-card rounded-2xl border border-dashed border-border/80">
             <SearchX className="h-16 w-16 text-muted-foreground/30 mb-4" />
             <h3 className="text-lg font-semibold text-foreground mb-2">
               No vehicles found
@@ -220,7 +298,12 @@ export function InventoryContent() {
               }
             >
               {paginated.map((vehicle, i) => (
-                <VehicleCard key={vehicle.id} vehicle={vehicle} view={view} index={i} />
+                <VehicleCard
+                  key={vehicle.id}
+                  vehicle={vehicle}
+                  view={view}
+                  index={i}
+                />
               ))}
             </div>
 

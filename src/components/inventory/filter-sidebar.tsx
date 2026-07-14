@@ -42,6 +42,7 @@ interface FilterSidebarProps {
   filters: InventoryFilters;
   makes: string[];
   activeCount: number;
+  mode?: "desktop" | "mobile" | "both";
 }
 
 function FilterContent({
@@ -405,67 +406,75 @@ export function FilterSidebar({
   filters,
   makes,
   activeCount,
+  mode = "both",
 }: FilterSidebarProps) {
+  const showDesktop = mode === "both" || mode === "desktop";
+  const showMobile = mode === "both" || mode === "mobile";
+
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:block w-64 shrink-0">
-        <div className="sticky top-24 bg-card rounded-2xl border border-border/60 p-5 max-h-[calc(100vh-8rem)] overflow-y-auto">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-sm font-semibold flex items-center gap-1.5">
-              <SlidersHorizontal className="h-4 w-4" />
-              Filters
-            </h2>
-            {activeCount > 0 && (
-              <Badge variant="secondary" className="text-[10px] h-5">
-                {activeCount} active
-              </Badge>
-            )}
-          </div>
-          <Separator className="mb-2" />
-          <FilterContent filters={filters} makes={makes} />
-        </div>
-      </aside>
-
-      {/* Mobile filter sheet */}
-      <div className="lg:hidden">
-        <Sheet>
-          <SheetTrigger
-            render={
-              <Button
-                variant="outline"
-                size="sm"
-                className="rounded-lg gap-1.5"
-              >
+      {showDesktop && (
+        <aside className="hidden lg:block w-64 shrink-0">
+          <div className="sticky top-24 bg-card rounded-2xl border border-border/60 p-5 max-h-[calc(100vh-8rem)] overflow-y-auto">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm font-semibold flex items-center gap-1.5">
                 <SlidersHorizontal className="h-4 w-4" />
                 Filters
-                {activeCount > 0 && (
-                  <Badge className="ml-1 h-5 px-1.5 text-[10px] bg-brand-500 text-white border-0">
-                    {activeCount}
-                  </Badge>
-                )}
-              </Button>
-            }
-          />
-          <SheetContent side="left" className="w-80 p-0">
-            <SheetTitle className="sr-only">Vehicle Filters</SheetTitle>
-            <div className="p-5 border-b">
-              <h2 className="text-lg font-semibold flex items-center gap-2">
-                <SlidersHorizontal className="h-5 w-5" />
-                Filters
-                {activeCount > 0 && (
-                  <Badge variant="secondary" className="text-xs">
-                    {activeCount}
-                  </Badge>
-                )}
               </h2>
+              {activeCount > 0 && (
+                <Badge variant="secondary" className="text-[10px] h-5">
+                  {activeCount} active
+                </Badge>
+              )}
             </div>
-            <div className="p-5 overflow-y-auto max-h-[calc(100vh-5rem)]">
-              <FilterContent filters={filters} makes={makes} />
-            </div>
-          </SheetContent>
-        </Sheet>
-      </div>
+            <Separator className="mb-2" />
+            <FilterContent filters={filters} makes={makes} />
+          </div>
+        </aside>
+      )}
+
+      {/* Mobile filter sheet */}
+      {showMobile && (
+        <div className="lg:hidden">
+          <Sheet>
+            <SheetTrigger
+              render={
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="rounded-lg gap-1.5 h-9"
+                >
+                  <SlidersHorizontal className="h-4 w-4" />
+                  Filters
+                  {activeCount > 0 && (
+                    <Badge className="ml-1 h-5 px-1.5 text-[10px] bg-brand-500 text-white border-0">
+                      {activeCount}
+                    </Badge>
+                  )}
+                </Button>
+              }
+            />
+            <SheetContent side="left" className="w-80 p-0">
+              <SheetTitle className="sr-only">Vehicle Filters</SheetTitle>
+              <div className="p-5 border-b">
+                <h2 className="text-lg font-semibold flex items-center gap-2">
+                  <SlidersHorizontal className="h-5 w-5" />
+                  Filters
+                  {activeCount > 0 && (
+                    <Badge variant="secondary" className="text-xs">
+                      {activeCount}
+                    </Badge>
+                  )}
+                </h2>
+              </div>
+              <div className="p-5 overflow-y-auto max-h-[calc(100vh-5rem)]">
+                <FilterContent filters={filters} makes={makes} />
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      )}
     </>
   );
 }
