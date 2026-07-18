@@ -15,50 +15,51 @@ import {
   FileText,
   Wrench,
   Headphones,
+  FileSpreadsheet,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { OrganizationClient } from "./organization-client";
 
 export const metadata: Metadata = {
-  title: "Organizational Structure & Team Directory | AnyCar Gh",
+  title: "AnyCargh Organizational Structure & Team Directory | AnyCar Gh",
   description:
-    "Explore AnyCar Gh's organizational structure, leadership team, functional departments, and core vehicle importation, sales, and logistics services.",
+    "Official organizational structure and team directory of AnyCargh, detailing our eleven-member team led by the CEO across Operations & Logistics, Sales & Business Development, and Finance & Administration.",
 };
 
 const coreServices = [
   {
     title: "Vehicle Importation & Shipping",
-    desc: "Seamless overseas vehicle procurement, port clearance, customs documentation, and logistics tracking.",
+    desc: "Seamless overseas vehicle procurement, port clearance, shipping schedules, customs documentation, and logistics tracking.",
     icon: Ship,
     badge: "Operations",
   },
   {
     title: "Vehicle Sales & Showroom",
-    desc: "Curated selection of premium new and pre-owned automobiles with transparent pricing and demonstrations.",
+    desc: "Curated selection of premium new and pre-owned automobiles, market lead follow-up, vehicle demonstrations, and transparent quotations.",
     icon: Car,
     badge: "Sales",
   },
   {
     title: "Car Rentals & Fleet Management",
-    desc: "Comprehensive rental services, fleet allocation, maintenance scheduling, and corporate mobility.",
+    desc: "Comprehensive rental bookings, fleet allocation, vehicle availability monitoring, rental agreements, and timely inspections.",
     icon: Briefcase,
     badge: "Fleet",
   },
   {
     title: "Logistics Coordination",
-    desc: "End-to-end vehicle delivery, transport management, and supply chain efficiency across Ghana.",
+    desc: "End-to-end vehicle delivery, fleet movement supervision, transport management, and operational efficiency across Ghana.",
     icon: TrendingUp,
     badge: "Logistics",
   },
   {
-    title: "Customer Experience & Lounge",
-    desc: "Dedicated hospitality and entertainment to ensure top-tier client satisfaction during every visit.",
+    title: "Customer Service & Marketing",
+    desc: "Digital marketing campaigns, social media, online listings, customer retention, and an engaging waiting lounge experience.",
     icon: Headphones,
     badge: "Experience",
   },
   {
-    title: "Finance & Admin Support",
-    desc: "Transparent invoicing, corporate budgeting, documentation compliance, and client financing assistance.",
+    title: "Finance & Administration Support",
+    desc: "Accounting, payroll, budgeting, invoicing, expense tracking, office administration, and financial management reports.",
     icon: Calculator,
     badge: "Finance",
   },
@@ -74,7 +75,7 @@ export default function OrganizationPage() {
           <div className="relative z-10 max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-accent-300">
               <Sparkles className="w-3.5 h-3.5" />
-              Leadership & Corporate Structure
+              Official Corporate Document & Directory
             </div>
             
             <div className="flex items-center gap-4">
@@ -89,7 +90,7 @@ export default function OrganizationPage() {
               </div>
               <div>
                 <h1 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">
-                  AnyCar<span className="text-accent-400">Gh</span>
+                  AnyCar<span className="text-accent-400">gh</span>
                 </h1>
                 <p className="text-accent-200 text-xs sm:text-sm tracking-wider uppercase font-medium mt-0.5">
                   Organizational Structure & Team Directory
@@ -97,42 +98,42 @@ export default function OrganizationPage() {
               </div>
             </div>
 
-            <p className="text-brand-100 text-sm sm:text-base leading-relaxed">
-              Our 11-member multi-disciplinary team is led by our Chief Executive Officer and structured across three primary functional divisions: 
+            <p className="text-brand-100 text-sm sm:text-base leading-relaxed bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-xs">
+              This document sets out AnyCargh&apos;s organizational structure — an eleven-member team led by the Chief Executive Officer, organized across three functional areas: 
               <strong className="text-white"> Operations & Logistics</strong>, 
               <strong className="text-white"> Sales & Business Development</strong>, and 
-              <strong className="text-white"> Finance & Administration</strong>.
+              <strong className="text-white"> Finance & Administration</strong>. The structure is built to support the company&apos;s core services: vehicle importation and shipping, vehicle sales, car rentals, fleet management, logistics coordination, and customer service and marketing.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10 text-xs text-brand-200">
-              <div>
-                <span className="block text-xl font-extrabold text-white font-heading">11</span>
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <span className="block text-2xl font-extrabold text-white font-heading">11</span>
                 <span>Team Members</span>
               </div>
-              <div>
-                <span className="block text-xl font-extrabold text-accent-400 font-heading">3</span>
-                <span>Core Divisions</span>
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <span className="block text-2xl font-extrabold text-accent-400 font-heading">3</span>
+                <span>Functional Areas</span>
               </div>
-              <div>
-                <span className="block text-xl font-extrabold text-white font-heading">6</span>
-                <span>Primary Services</span>
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <span className="block text-2xl font-extrabold text-white font-heading">6</span>
+                <span>Core Services</span>
               </div>
-              <div>
-                <span className="block text-xl font-extrabold text-accent-400 font-heading">100%</span>
-                <span>Customer Focus</span>
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                <span className="block text-2xl font-extrabold text-accent-400 font-heading">100%</span>
+                <span>Excellence & Trust</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Core Capabilities */}
+        {/* Core Services Section */}
         <section className="space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
-              Core Services & Operations
+              Company Core Services
             </h2>
             <p className="text-muted-foreground text-sm">
-              AnyCar Gh provides full end-to-end automotive mobility solutions across Ghana and beyond.
+              Our organizational structure is engineered specifically to deliver seamless automotive solutions across Ghana.
             </p>
           </div>
 
@@ -140,7 +141,7 @@ export default function OrganizationPage() {
             {coreServices.map((service) => (
               <Card
                 key={service.title}
-                className="p-6 border-border/60 hover:border-brand-500/40 hover:shadow-lg transition-all duration-300 rounded-2xl group relative overflow-hidden"
+                className="p-6 border-border/60 hover:border-brand-500/40 hover:shadow-lg transition-all duration-300 rounded-2xl group relative overflow-hidden bg-background"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 rounded-xl bg-brand-500/10 dark:bg-brand-400/10 flex items-center justify-center text-brand-600 dark:text-brand-400 group-hover:scale-110 transition-transform">
@@ -161,7 +162,7 @@ export default function OrganizationPage() {
           </div>
         </section>
 
-        {/* Interactive Org Chart & Directory Component */}
+        {/* Interactive Client Section: Charts, Directory & Reporting Lines */}
         <OrganizationClient />
       </div>
     </div>
