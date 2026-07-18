@@ -172,20 +172,17 @@ export default function HomePage() {
 
         <div className="relative max-w-7xl mx-auto px-4 lg:px-6 py-32 lg:py-40">
           <div className="max-w-2xl">
-            <Badge className="bg-accent-500/20 text-accent-300 border-accent-500/30 mb-6 text-xs font-medium">
-              ✦ Premier Auto Dealership
+            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 mb-6 text-xs font-semibold uppercase tracking-wider">
+              ✦ Cars for All Budgets
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-heading font-bold text-white leading-[1.1] tracking-tight">
-              Find Your
-              <span className="block mt-1">
-                <span className="bg-gradient-to-r from-accent-300 to-accent-500 bg-clip-text text-transparent">
-                  Perfect Drive
-                </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-heading font-extrabold text-white leading-[1.1] tracking-tight">
+              AnyCar<span className="text-emerald-500">gh</span>
+              <span className="block mt-2 text-2xl sm:text-4xl lg:text-5xl font-bold text-emerald-400">
+                Sales · Rental · Importation
               </span>
             </h1>
-            <p className="mt-6 text-lg text-brand-200 leading-relaxed max-w-lg">
-              Browse our curated collection of premium vehicles. Transparent
-              pricing, certified quality, and a buying experience you&apos;ll love.
+            <p className="mt-6 text-base sm:text-lg text-zinc-300 leading-relaxed max-w-xl">
+              AnyCargh delivers unparalleled vehicle sales, reliable rentals, and seamless importation across Ghana. Discover transparency and certified quality tailored to your journey.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-3 mt-8">

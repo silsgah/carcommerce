@@ -1,110 +1,121 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Award, Users, ShieldCheck, HeartHandshake, MapPin, Phone, Mail } from "lucide-react";
+import { Award, Users, ShieldCheck, HeartHandshake, MapPin, Phone, Mail, Globe, Ship, Car, Calendar } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | AnyCargh - Cars for All Budgets",
   description:
-    "Learn about AutoLot's mission, values, our experienced team, and why we are the premier auto dealer in Springfield.",
+    "Based in Ashale Botwe, Accra (near East Legon Hills), AnyCarGH is a leading vehicle sales, import sourcing, and premium car rental provider in Ghana under CEO John Kofi Boateng.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="pt-24 pb-20 bg-surface">
+    <div className="pt-24 pb-20 bg-surface min-h-screen">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 space-y-16">
         {/* Hero Section */}
-        <div className="relative rounded-3xl overflow-hidden min-h-[40vh] flex items-center p-8 sm:p-12 lg:p-16 border">
-          <Image
-            src="/vehicles/rr-sport-1.jpg"
-            alt="Dealership team"
-            fill
-            className="object-cover opacity-20 dark:opacity-10"
-          />
-          <div className="relative max-w-2xl space-y-4">
-            <h1 className="text-4xl font-heading font-bold text-foreground">
-              Our Journey & Mission
+        <div className="relative rounded-3xl overflow-hidden min-h-[45vh] flex items-center p-8 sm:p-12 lg:p-16 border border-border/60 bg-gradient-to-br from-black via-zinc-900 to-emerald-950 text-white shadow-2xl">
+          <div className="relative z-10 max-w-3xl space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-xs font-semibold text-emerald-300 uppercase tracking-wider">
+              ✦ About AnyCargh
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white">
+              Cars for All Budgets
             </h1>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              Founded in 2001, AutoLot was built on a simple premise: vehicle buying should be
-              straightforward, transparent, and enjoyable. We have helped over 15,000 drivers in
-              Springfield find quality vehicles matching their budgets and lifestyles.
+
+            <div className="space-y-4 text-zinc-200 text-sm sm:text-base leading-relaxed">
+              <p className="bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-xs">
+                Based in Ashale Botwe, Accra (near East Legon Hills), AnyCarGH is a leading vehicle sales, import sourcing, and premium car rental provider in Ghana. Under the leadership of CEO John Kofi Boateng, we operate with absolute integrity, offering transparent customs clearing, verified safety standards, and top-tier logistics support.
+              </p>
+              <p className="bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-xs">
+                From luxury sedans and family SUVs to robust commercial utility fleets, we coordinate the entire vehicle procurement, clearing, and delivery cycle. Whether you&apos;re buying your next car, booking a short-term rental, or importing a vehicle from overseas, we stand by your side with professional guidance every step of the way.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 Core Pillar Services */}
+        <div className="space-y-8">
+          <div className="text-center max-w-xl mx-auto space-y-2">
+            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
+              Our Core Services
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              Three pillars built to deliver value and accessibility for every vehicle owner in Ghana.
             </p>
           </div>
-        </div>
 
-        {/* Value Props */}
-        <div className="space-y-8">
-          <h2 className="text-2xl font-heading font-bold text-center text-foreground">
-            Our Core Values
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: ShieldCheck,
-                title: "Certified Integrity",
-                desc: "We stand behind every car we sell. Rigorous testing and honest vehicle condition reports.",
-              },
-              {
-                icon: HeartHandshake,
-                title: "Customer First",
-                desc: "No high-pressure sales tactics. We work at your pace to find the perfect fit.",
-              },
-              {
-                icon: Award,
-                title: "Premium Standards",
-                desc: "We curate our inventory meticulously, ensuring only quality vehicles reach our lot.",
-              },
-              {
-                icon: Users,
-                title: "Local Community",
-                desc: "Springfield is our home. We proudly support local organizations, schools, and charities.",
-              },
-            ].map((v) => (
-              <Card key={v.title} className="p-6 border-border/50 rounded-2xl space-y-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/30 flex items-center justify-center">
-                  <v.icon className="h-5 w-5 text-brand-600 dark:text-brand-400" />
-                </div>
-                <h3 className="font-heading font-semibold text-sm text-foreground">{v.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{v.desc}</p>
-              </Card>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="p-6 rounded-2xl border-border/60 space-y-4 bg-background hover:border-emerald-500/40 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                <Car className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-foreground">Vehicle Sales</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                The Right Car, The Right Price — Every Time. Inspected, verified, and priced to fit real budgets.
+              </p>
+            </Card>
+
+            <Card className="p-6 rounded-2xl border-border/60 space-y-4 bg-background hover:border-emerald-500/40 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                <Calendar className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-foreground">Car Rentals</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Wherever You&apos;re Headed, We&apos;ve Got the Wheels. Clean, reliable rental fleet available on your terms.
+              </p>
+            </Card>
+
+            <Card className="p-6 rounded-2xl border-border/60 space-y-4 bg-background hover:border-emerald-500/40 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                <Ship className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-foreground">Vehicle Importation</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                From Overseas to Your Driveway. Sourcing, shipping, clearing, and delivering vehicles from trusted overseas markets.
+              </p>
+            </Card>
           </div>
         </div>
 
-        {/* Location & Hours */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 border-t">
+        {/* Location & Contact Details */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 border-t border-border/60">
           <div className="space-y-6">
             <h2 className="text-2xl font-heading font-bold text-foreground">Visit Our Showroom</h2>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              We invite you to visit our state-of-the-art showroom in Springfield. Explore our full
-              collection up close, speak with our product advisers, and experience the AutoLot difference.
+              We invite you to visit our main facility in Accra to inspect our vehicle inventory, meet our leadership team, or discuss custom vehicle import requests.
             </p>
             <div className="space-y-4 text-sm text-muted-foreground">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-accent-500 shrink-0 mt-0.5" />
-                <span>123 Auto Drive, Springfield, IL 62701</span>
+                <MapPin className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                <span>Ashale Botwe, Accra (near East Legon Hills)</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-accent-500 shrink-0" />
-                <span>(555) 123-4567</span>
+                <Phone className="h-5 w-5 text-emerald-500 shrink-0" />
+                <span>055 030 5555</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-accent-500 shrink-0" />
-                <span>info@autolot.com</span>
+                <Mail className="h-5 w-5 text-emerald-500 shrink-0" />
+                <span>info@anycarghana.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Globe className="h-5 w-5 text-emerald-500 shrink-0" />
+                <span>anycarghana.com</span>
               </div>
             </div>
           </div>
-          <Card className="p-6 border-border/50 rounded-2xl">
+
+          <Card className="p-6 border-border/60 rounded-2xl bg-background">
             <h3 className="font-heading font-semibold text-base text-foreground mb-4">Business Hours</h3>
             <div className="space-y-3 text-sm text-muted-foreground">
               {[
-                { day: "Monday", hours: "9:00 AM - 8:00 PM" },
-                { day: "Tuesday", hours: "9:00 AM - 8:00 PM" },
-                { day: "Wednesday", hours: "9:00 AM - 8:00 PM" },
-                { day: "Thursday", hours: "9:00 AM - 8:00 PM" },
-                { day: "Friday", hours: "9:00 AM - 8:00 PM" },
-                { day: "Saturday", hours: "9:00 AM - 6:00 PM" },
+                { day: "Monday", hours: "9:00 AM - 6:00 PM" },
+                { day: "Tuesday", hours: "9:00 AM - 6:00 PM" },
+                { day: "Wednesday", hours: "9:00 AM - 6:00 PM" },
+                { day: "Thursday", hours: "9:00 AM - 6:00 PM" },
+                { day: "Friday", hours: "9:00 AM - 6:00 PM" },
+                { day: "Saturday", hours: "9:00 AM - 4:00 PM" },
                 { day: "Sunday", hours: "Closed" },
               ].map((h) => (
                 <div key={h.day} className="flex justify-between pb-2 border-b border-border/30 last:border-0 last:pb-0">

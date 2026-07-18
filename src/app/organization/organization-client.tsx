@@ -42,6 +42,7 @@ interface TeamMember {
   department: "Executive Leadership" | "Operations & Logistics" | "Sales & Business Development" | "Finance & Administration";
   reportsTo: string;
   roles: string;
+  email: string;
   initials: string;
   color: string;
   icon: any;
@@ -57,6 +58,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Board of Directors & Stakeholders",
     roles:
       "Sets the company's vision and strategy, oversees business performance, approves major investments, builds partnerships, manages key stakeholders, ensures legal compliance, and drives business growth.",
+    email: "john.boateng@anycarghana.com",
     initials: "JB",
     color: "from-amber-500 to-amber-700",
     icon: ShieldCheck,
@@ -70,6 +72,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Chief Executive Officer (CEO)",
     roles:
       "Oversees day-to-day operations, coordinates vehicle imports and exports, manages shipping schedules, supervises fleet movement, ensures timely vehicle delivery, and improves operational efficiency.",
+    email: "prosper.kwame@anycarghana.com",
     initials: "PK",
     color: "from-blue-500 to-indigo-600",
     icon: Ship,
@@ -83,6 +86,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Chief Executive Officer (CEO)",
     roles:
       "Develops sales strategies, manages the sales team, identifies new business opportunities, builds corporate partnerships, negotiates contracts, and drives revenue growth.",
+    email: "samuel.asare@anycarghana.com",
     initials: "SA",
     color: "from-emerald-500 to-teal-700",
     icon: TrendingUp,
@@ -96,6 +100,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Chief Executive Officer (CEO)",
     roles:
       "Manages accounting, payroll, budgeting, invoicing, expense tracking, office administration, procurement support, and prepares financial reports for management.",
+    email: "linda.arthur@anycarghana.com",
     initials: "LA",
     color: "from-purple-500 to-purple-700",
     icon: Calculator,
@@ -109,6 +114,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Sales & Business Development Manager",
     roles:
       "Markets and sells vehicles, follows up with leads, conducts vehicle demonstrations, prepares quotations, manages customer relationships, and ensures high customer satisfaction.",
+    email: "richmond.ganaku@anycarghana.com",
     initials: "RG",
     color: "from-emerald-600 to-green-700",
     icon: Car,
@@ -122,6 +128,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Sales & Business Development Manager",
     roles:
       "Manages social media and digital marketing, creates promotional campaigns, responds to customer inquiries, manages online listings, strengthens the company's brand, and supports customer retention.",
+    email: "reynold.antwi@anycarghana.com",
     initials: "RA",
     color: "from-teal-500 to-emerald-600",
     icon: Users,
@@ -135,6 +142,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Operations & Logistics Manager",
     roles:
       "Handles import/export documentation, liaises with shipping lines, customs agents, and ports, tracks shipments, processes vehicle registration documents, and ensures compliance with shipping regulations.",
+    email: "richard.adanu@anycarghana.com",
     initials: "RA",
     color: "from-blue-600 to-cyan-600",
     icon: FileText,
@@ -148,6 +156,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Operations & Logistics Manager",
     roles:
       "Manages rental bookings, allocates vehicles, oversees rental agreements, monitors vehicle availability, coordinates fleet utilization, and ensures timely returns and inspections.",
+    email: "isaac.nyanteh@anycarghana.com",
     initials: "IN",
     color: "from-cyan-600 to-blue-700",
     icon: Briefcase,
@@ -161,6 +170,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Operations & Logistics Manager",
     roles:
       "Creates a comfortable, engaging, and enjoyable environment for customers while they wait, enhancing the overall customer experience and the company's brand image.",
+    email: "stanley.agyeman@anycarghana.com",
     initials: "SA",
     color: "from-sky-500 to-indigo-600",
     icon: Headphones,
@@ -174,6 +184,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Operations & Logistics Manager",
     roles:
       "Ensures the garage, office, and surrounding facilities are safe, functional, clean, and operating efficiently while supporting daily business operations.",
+    email: "leslie.okai@anycarghana.com",
     initials: "LO",
     color: "from-slate-600 to-slate-800",
     icon: Wrench,
@@ -187,6 +198,7 @@ const teamMembers: TeamMember[] = [
     reportsTo: "Operations & Logistics Manager",
     roles:
       "Ensures the garage, office, and surrounding facilities are safe, functional, clean, and operating efficiently while supporting daily business operations.",
+    email: "isaac.kumah@anycarghana.com",
     initials: "IK",
     color: "from-slate-600 to-slate-800",
     icon: Wrench,
@@ -472,8 +484,9 @@ export function OrganizationClient() {
               <thead className="bg-surface-secondary text-text-secondary uppercase text-[10px] font-bold tracking-wider border-b border-border/60">
                 <tr>
                   <th className="py-3.5 px-4 w-12 text-center">No.</th>
-                  <th className="py-3.5 px-4 w-48">Name</th>
-                  <th className="py-3.5 px-4 w-64">Position</th>
+                  <th className="py-3.5 px-4 w-44">Name</th>
+                  <th className="py-3.5 px-4 w-56">Position</th>
+                  <th className="py-3.5 px-4 w-52">Suggested Email</th>
                   <th className="py-3.5 px-4">Key Roles & Responsibilities</th>
                 </tr>
               </thead>
@@ -486,8 +499,13 @@ export function OrganizationClient() {
                     <td className="py-4 px-4 font-bold text-foreground font-heading">
                       {member.name}
                     </td>
-                    <td className="py-4 px-4 font-medium text-brand-600 dark:text-brand-400">
+                    <td className="py-4 px-4 font-medium text-emerald-600 dark:text-emerald-400">
                       {member.position}
+                    </td>
+                    <td className="py-4 px-4 font-mono text-xs">
+                      <a href={`mailto:${member.email}`} className="text-emerald-600 dark:text-emerald-400 hover:underline">
+                        {member.email}
+                      </a>
                     </td>
                     <td className="py-4 px-4 text-xs text-muted-foreground leading-relaxed">
                       {member.roles}
