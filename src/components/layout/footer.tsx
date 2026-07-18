@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Car,
   MapPin,
@@ -11,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 const quickLinks = [
   { href: "/inventory", label: "Browse Inventory" },
   { href: "/financing", label: "Financing Calculator" },
+  { href: "/organization", label: "Organizational Structure" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
   { href: "/favorites", label: "Saved Vehicles" },
@@ -35,12 +37,17 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-5">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-400 to-accent-500 flex items-center justify-center">
-                <Car className="h-5 w-5 text-white" />
+              <div className="relative w-9 h-9 overflow-hidden rounded-lg border border-brand-700 bg-white">
+                <Image
+                  src="/logo.jpg"
+                  alt="AnyCar Gh Logo"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <span className="text-xl font-bold tracking-tight">
-                  Auto<span className="text-accent-400">Lot</span>
+                  AnyCar<span className="text-accent-400">Gh</span>
                 </span>
               </div>
             </Link>

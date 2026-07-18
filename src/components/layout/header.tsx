@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -25,6 +26,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { href: "/inventory", label: "Inventory" },
   { href: "/financing", label: "Financing" },
+  { href: "/organization", label: "Organization" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -87,10 +89,14 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-18">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:shadow-brand-500/40 transition-shadow">
-                <Car className="h-5 w-5 text-white" />
-              </div>
+            <div className="relative w-9 h-9 overflow-hidden rounded-lg shadow-md border border-border/40 group-hover:scale-105 transition-transform bg-white">
+              <Image
+                src="/logo.jpg"
+                alt="AnyCar Gh Logo"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span
@@ -101,7 +107,7 @@ export function Header() {
                     : "text-text-primary"
                 )}
               >
-                Auto<span className="text-accent-500">Lot</span>
+                AnyCar<span className="text-accent-500">Gh</span>
               </span>
               <span
                 className={cn(
@@ -111,7 +117,7 @@ export function Header() {
                     : "text-text-muted"
                 )}
               >
-                Premium Autos
+                Premium Autos & Logistics
               </span>
             </div>
           </Link>
@@ -268,11 +274,16 @@ export function Header() {
                 <div className="flex flex-col h-full">
                   <div className="p-6 border-b">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center">
-                        <Car className="h-5 w-5 text-white" />
+                      <div className="relative w-9 h-9 overflow-hidden rounded-lg shadow-md border border-border/40 bg-white">
+                        <Image
+                          src="/logo.jpg"
+                          alt="AnyCar Gh Logo"
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                       <span className="text-xl font-bold tracking-tight">
-                        Auto<span className="text-accent-500">Lot</span>
+                        AnyCar<span className="text-accent-500">Gh</span>
                       </span>
                     </div>
                   </div>
