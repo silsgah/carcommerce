@@ -13,43 +13,56 @@ import Link from "next/link";
 // Fallback demo data to guarantee working states before seed runs
 const DEMO_VEHICLES = [
   {
-    id: "v1", slug: "2024-bmw-m4-competition", make: "BMW", model: "M4", trim: "Competition xDrive",
-    year: 2024, price: 84900, mileage: 1250, bodyType: "COUPE", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Sapphire Black",
-    condition: "NEW", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 503, mpgCity: 16, mpgHighway: 23, engineInfo: "3.0L Twin-Turbo I6",
-    features: ["Adaptive M Suspension", "M Carbon Bucket Seats", "Head-Up Display", "Harman Kardon Audio", "Carbon Roof", "Laserlights"],
+    id: "v1", slug: "2022-range-rover-autobiography", make: "Land Rover", model: "Range Rover", trim: "Autobiography LWB",
+    year: 2022, price: 185000, mileage: 18500, bodyType: "SUV", fuelType: "GASOLINE",
+    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Santorini Black",
+    condition: "CERTIFIED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false, previousPrice: null,
+    horsepower: 518, mpgCity: 14, mpgHighway: 19, engineInfo: "5.0L Supercharged V8",
+    features: ["Autobiography Package", "Panoramic Roof", "Meridian Signature Sound", "Heated & Cooled Seats", "Rear Entertainment", "Soft-Close Doors"],
     images: [
-      "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=600&fit=crop",
+      "/vehicles/rr-autobiography-1.jpg",
+      "/vehicles/rr-autobiography-2.jpg",
+      "/vehicles/rr-autobiography-3.jpg",
+      "/vehicles/rr-autobiography-4.jpg",
+      "/vehicles/rr-autobiography-5.jpg",
     ],
-    description: "Experience the ultimate driving machine. This brand new BMW M4 Competition Coupe is equipped with the state-of-the-art xDrive all-wheel-drive system and a heart-pounding 503-horsepower twin-turbocharged engine. Finished in Sapphire Black over black extended Merino leather."
+    description: "A pinnacle of luxury motoring. This Certified Pre-Owned Range Rover Autobiography LWB is finished in Santorini Black over a stunning cream leather interior with wood trim. Powered by the legendary 5.0L Supercharged V8 producing 518 horsepower, it delivers effortless performance alongside supreme comfort. Loaded with the full Autobiography specification including Meridian Signature audio, panoramic roof, heated and cooled massage seats, and rear entertainment."
   },
   {
-    id: "v2", slug: "2024-mercedes-amg-gt-63", make: "Mercedes-Benz", model: "AMG GT", trim: "63 S",
-    year: 2024, price: 179900, mileage: 890, bodyType: "COUPE", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Obsidian Black",
-    condition: "NEW", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 630, mpgCity: 15, mpgHighway: 20, engineInfo: "4.0L Twin-Turbo V8",
-    features: ["AMG Performance Exhaust", "Carbon Fiber Package", "Burmester Sound", "Rear Axle Steering", "Dynamic Plus Package"],
+    id: "v2", slug: "2019-range-rover-sport-supercharged", make: "Land Rover", model: "Range Rover Sport", trim: "Supercharged",
+    year: 2019, price: 95000, mileage: 42000, bodyType: "SUV", fuelType: "GASOLINE",
+    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Indus Silver",
+    condition: "USED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false, previousPrice: null,
+    horsepower: 518, mpgCity: 14, mpgHighway: 19, engineInfo: "5.0L Supercharged V8",
+    features: ["Sport Suspension", "Panoramic Roof", "Meridian Sound System", "Heated Leather Seats", "Terrain Response 2", "Adaptive Cruise Control"],
     images: [
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1525609004556-c46c7d6cf0a3?w=800&h=600&fit=crop",
+      "/vehicles/rr-sport-1.jpg",
+      "/vehicles/rr-sport-2.jpg",
+      "/vehicles/rr-sport-3.jpg",
+      "/vehicles/rr-sport-4.jpg",
+      "/vehicles/rr-sport-5.jpg",
+      "/vehicles/rr-sport-6.jpg",
+      "/vehicles/rr-sport-7.jpg",
+      "/vehicles/rr-sport-8.jpg",
     ],
-    description: "Handcrafted performance meets grand touring comfort. Powered by a thunderous 630-hp 4.0L V8, this stunning AMG GT 63 S delivers unparalleled acceleration and dynamic handling. Equipped with carbon fiber trim, aerodynamic package, and active suspension."
+    description: "Athletic performance meets all-terrain capability. This Indus Silver Range Rover Sport Supercharged delivers thrilling acceleration with its 518-horsepower 5.0L V8 engine. Features include sport-tuned air suspension, full black leather interior, panoramic sunroof, Meridian sound system, and Land Rover's advanced Terrain Response 2 system. Well-maintained with full service history."
   },
   {
-    id: "v3", slug: "2023-porsche-911-carrera-s", make: "Porsche", model: "911", trim: "Carrera S",
-    year: 2023, price: 128500, mileage: 4200, bodyType: "COUPE", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "RWD", exteriorColor: "Guards Red",
-    condition: "CERTIFIED", status: "AVAILABLE", isNewArrival: false, isPriceDrop: true, previousPrice: 135000,
-    horsepower: 443, mpgCity: 18, mpgHighway: 24, engineInfo: "3.0L Twin-Turbo H6",
-    features: ["Sport Chrono Package", "PASM Sport Suspension", "Bose Surround Sound", "Premium Package", "Sport Exhaust"],
+    id: "v3", slug: "2025-toyota-land-cruiser-prado", make: "Toyota", model: "Land Cruiser Prado", trim: "VX",
+    year: 2025, price: 72000, mileage: 0, bodyType: "SUV", fuelType: "GASOLINE",
+    transmission: "AUTOMATIC", drivetrain: "FOUR_WD", exteriorColor: "White / Black Roof",
+    condition: "NEW", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false, previousPrice: null,
+    horsepower: 326, mpgCity: 18, mpgHighway: 24, engineInfo: "2.8L Turbo Diesel / 2.4L Turbo",
+    features: ["Multi-Terrain Select", "Crawl Control", "Panoramic Sunroof", "Toyota Safety Sense", "Premium Audio", "LED Headlights"],
     images: [
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&h=600&fit=crop",
+      "/vehicles/lc-prado-1.jpg",
+      "/vehicles/lc-prado-2.jpg",
+      "/vehicles/lc-prado-3.jpg",
+      "/vehicles/lc-prado-4.jpg",
+      "/vehicles/lc-prado-5.jpg",
+      "/vehicles/lc-prado-6.jpg",
     ],
-    description: "The timeless benchmark of sports cars. This Certified Pre-Owned Guards Red Carrera S has been thoroughly inspected and includes Porsche Certified warranty. Loaded with key enthusiast options including Sport Chrono and active suspension."
+    description: "Brand new and fresh out of the box. This 2025 Toyota Land Cruiser Prado VX arrives in a striking white exterior with black roof combination. Built on Toyota's legendary TNGA-F platform, it features advanced Multi-Terrain Select, Crawl Control, and a comprehensive Toyota Safety Sense suite. The spacious interior includes a panoramic sunroof, premium audio, and seats still in their factory wrapping — truly zero miles."
   },
 ];
 

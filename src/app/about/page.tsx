@@ -16,7 +16,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <div className="relative rounded-3xl overflow-hidden min-h-[40vh] flex items-center p-8 sm:p-12 lg:p-16 border">
           <Image
-            src="https://images.unsplash.com/photo-1562575214-da9fcf59b907?w=1200&h=600&fit=crop"
+            src="/vehicles/rr-sport-1.jpg"
             alt="Dealership team"
             fill
             className="object-cover opacity-20 dark:opacity-10"
