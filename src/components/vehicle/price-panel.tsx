@@ -85,9 +85,35 @@ export function PricePanel({ vehicle }: PricePanelProps) {
     setOpenTestDrive(false);
   };
 
+  const todayStr = new Date().toISOString().split("T")[0];
+  const defaultEndStr = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+
+  const [holdStartDate, setHoldStartDate] = useState(todayStr);
+  const [holdEndDate, setHoldEndDate] = useState(defaultEndStr);
+
+  const getHoldDays = () => {
+    if (!holdStartDate || !holdEndDate) return 0;
+    const start = new Date(holdStartDate);
+    const end = new Date(holdEndDate);
+    const diffTime = end.getTime() - start.getTime();
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  };
+
+  const holdDays = getHoldDays();
+  const isHoldExceeded = holdDays > 90;
+  const isHoldInvalid = holdDays <= 0 || isHoldExceeded;
+
   const handleReserveSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Reservation request submitted! We have placed a temporary hold on this vehicle.");
+    if (isHoldInvalid) {
+      if (isHoldExceeded) {
+        toast.error("Hold period cannot exceed 3 months (90 days).");
+      } else {
+        toast.error("End date must be after start date.");
+      }
+      return;
+    }
+    toast.success(`Reservation request submitted! Vehicle on hold for ${holdDays} days (until ${holdEndDate}).`);
     setOpenReserve(false);
   };
 
@@ -149,9 +175,58 @@ export function PricePanel({ vehicle }: PricePanelProps) {
                 </div>
                 <div className="space-y-1">
                   <Label htmlFor="reserve-phone">Phone Number</Label>
-                  <Input id="reserve-phone" type="tel" required placeholder="(555) 123-4567" />
+                  <Input id="reserve-phone" type="tel" required placeholder="055 030 5555" />
                 </div>
               </div>
+
+              {/* Hold Date Range (Max 3 Months / 90 Days) */}
+              <div className="grid grid-cols-2 gap-3 pt-1 border-t border-border/40">
+                <div className="space-y-1">
+                  <Label htmlFor="hold-start" className="text-xs font-semibold">Hold Start Date</Label>
+                  <Input
+                    id="hold-start"
+                    type="date"
+                    required
+                    min={todayStr}
+                    value={holdStartDate}
+                    onChange={(e) => setHoldStartDate(e.target.value)}
+                    className="text-xs"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="hold-end" className="text-xs font-semibold">Hold End Date</Label>
+                  <Input
+                    id="hold-end"
+                    type="date"
+                    required
+                    min={holdStartDate}
+                    value={holdEndDate}
+                    onChange={(e) => setHoldEndDate(e.target.value)}
+                    className={cn("text-xs", isHoldExceeded && "border-red-500 focus-visible:ring-red-500")}
+                  />
+                </div>
+              </div>
+
+              {/* Live Hold Status & Limit Banner */}
+              <div className="text-xs">
+                {isHoldExceeded ? (
+                  <div className="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 font-semibold flex items-center gap-1.5">
+                    ⚠️ Hold period cannot exceed 3 months (90 days). Selected: {holdDays} days.
+                  </div>
+                ) : holdDays > 0 ? (
+                  <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 font-semibold flex items-center justify-between">
+                    <span>Hold Duration: {holdDays} {holdDays === 1 ? "day" : "days"}</span>
+                    <span className="text-[10px] uppercase tracking-wider bg-emerald-500 text-white px-2 py-0.5 rounded-md">
+                      Max 90 days (3 Mos)
+                    </span>
+                  </div>
+                ) : (
+                  <div className="text-muted-foreground text-[11px]">
+                    Select start and end dates. Maximum hold period allowed is 3 months (90 days).
+                  </div>
+                )}
+              </div>
+
               <div className="space-y-1">
                 <Label htmlFor="reserve-contact">Preferred Contact Method</Label>
                 <select id="reserve-contact" className="w-full h-10 px-3 border rounded-lg text-sm bg-background">
@@ -160,8 +235,16 @@ export function PricePanel({ vehicle }: PricePanelProps) {
                   <option value="text">Text Message</option>
                 </select>
               </div>
-              <Button type="submit" className="w-full bg-accent-500 text-white rounded-xl">
-                Submit Reservation Request
+
+              <Button
+                type="submit"
+                disabled={isHoldInvalid}
+                className={cn(
+                  "w-full text-white rounded-xl font-bold transition-all",
+                  isHoldInvalid ? "bg-zinc-400 cursor-not-allowed" : "bg-emerald-600 hover:bg-emerald-700 shadow-md"
+                )}
+              >
+                {isHoldExceeded ? "Exceeds 3-Month Limit" : "Submit Reservation Request"}
               </Button>
             </form>
           </DialogContent>

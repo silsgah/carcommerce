@@ -136,12 +136,12 @@ const featuredVehicles = [
 ];
 
 const bodyTypes = [
-  { label: "SUVs", icon: Car, href: "/inventory?bodyType=SUV", count: 14 },
-  { label: "Sedans", icon: Car, href: "/inventory?bodyType=SEDAN", count: 12 },
-  { label: "Trucks", icon: Truck, href: "/inventory?bodyType=TRUCK", count: 8 },
-  { label: "Coupes", icon: Zap, href: "/inventory?bodyType=COUPE", count: 6 },
-  { label: "Electric", icon: Zap, href: "/inventory?fuelType=ELECTRIC", count: 5 },
-  { label: "Convertibles", icon: Car, href: "/inventory?bodyType=CONVERTIBLE", count: 3 },
+  { label: "SUVs", icon: Car, href: "/inventory?bodyType=SUV", count: 10 },
+  { label: "Sedans", icon: Car, href: "/inventory?bodyType=SEDAN", count: 4 },
+  { label: "Coupes", icon: Zap, href: "/inventory?bodyType=COUPE", count: 4 },
+  { label: "Trucks", icon: Truck, href: "/inventory?bodyType=TRUCK", count: 2 },
+  { label: "Hatchbacks", icon: Car, href: "/inventory?bodyType=HATCHBACK", count: 1 },
+  { label: "Electric", icon: Zap, href: "/inventory?fuelType=ELECTRIC", count: 2 },
 ];
 
 const stats = [
