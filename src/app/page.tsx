@@ -199,7 +199,7 @@ export default function HomePage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="rounded-full px-8 border-white/20 text-white hover:bg-white/10 hover:text-white text-base"
+                  className="rounded-full px-8 border-white/40 text-white bg-black/60 hover:bg-white hover:text-black font-semibold transition-all text-base backdrop-blur-xs shadow-md"
                 >
                   <Calculator className="mr-2 h-4 w-4" />
                   Payment Calculator
@@ -421,7 +421,7 @@ export default function HomePage() {
                   <Link href="/financing">
                     <Button
                       size="lg"
-                      className="bg-accent-500 hover:bg-accent-600 text-white rounded-full px-8 shadow-xl shadow-accent-500/25"
+                      className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-full px-8 shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all text-base"
                     >
                       Payment Calculator
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -431,7 +431,7 @@ export default function HomePage() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="rounded-full px-8 border-white/20 text-white hover:bg-white/10 hover:text-white"
+                      className="rounded-full px-8 border-white/40 text-white bg-black/60 hover:bg-white hover:text-black font-semibold transition-all text-base shadow-md"
                     >
                       Talk to Finance Team
                     </Button>
@@ -439,29 +439,29 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="shrink-0 w-full lg:w-auto">
-                <div className="bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 p-8 max-w-sm mx-auto">
-                  <p className="text-brand-300 text-sm mb-1">
+                <div className="bg-black/60 backdrop-blur-lg rounded-2xl border border-white/20 p-8 max-w-sm mx-auto shadow-2xl">
+                  <p className="text-zinc-300 text-sm mb-1 font-medium">
                     Estimated Monthly Payment
                   </p>
-                  <p className="text-4xl font-heading font-bold text-white">
-                    $583<span className="text-lg text-brand-400">/mo</span>
+                  <p className="text-4xl font-heading font-extrabold text-white">
+                    GH₵ 583<span className="text-lg text-emerald-400 font-normal">/mo</span>
                   </p>
-                  <div className="mt-4 space-y-2 text-sm text-brand-300">
+                  <div className="mt-4 space-y-2.5 text-sm text-zinc-300">
                     <div className="flex justify-between">
                       <span>Vehicle Price</span>
-                      <span className="text-white">$35,000</span>
+                      <span className="text-white font-semibold">GH₵ 35,000</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Down Payment</span>
-                      <span className="text-white">$5,000</span>
+                      <span className="text-white font-semibold">GH₵ 5,000</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Term</span>
-                      <span className="text-white">60 months</span>
+                      <span className="text-white font-semibold">60 months</span>
                     </div>
                     <div className="flex justify-between">
                       <span>APR</span>
-                      <span className="text-white">6.9%</span>
+                      <span className="text-white font-semibold">6.9%</span>
                     </div>
                   </div>
                 </div>
