@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "AutoLot",
   },
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/favicon.ico",
+    apple: "/logo.jpg",
+  },
 };
 
 export default function RootLayout({
