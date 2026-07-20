@@ -11,126 +11,13 @@ import { SearchX, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { vehicles as ALL_VEHICLES } from "@/data/vehicles";
 
-// Real vehicle inventory
-const DEMO_VEHICLES: VehicleCardData[] = [
-  {
-    id: "v1", slug: "2022-range-rover-autobiography", make: "Land Rover", model: "Range Rover", trim: "Autobiography LWB",
-    year: 2022, price: 185000, mileage: 18500, bodyType: "SUV", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Santorini Black",
-    condition: "CERTIFIED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 518, mpgCity: 14, mpgHighway: 19, engineInfo: "5.0L Supercharged V8",
-    features: ["Autobiography Package", "Panoramic Roof", "Meridian Signature Sound", "Heated & Cooled Seats", "Rear Entertainment"],
-    images: ["/vehicles/rr-autobiography-1.jpg", "/vehicles/rr-autobiography-2.jpg", "/vehicles/rr-autobiography-3.jpg", "/vehicles/rr-autobiography-4.jpg", "/vehicles/rr-autobiography-5.jpg"],
-  },
-  {
-    id: "v2", slug: "2019-range-rover-sport-supercharged", make: "Land Rover", model: "Range Rover Sport", trim: "Supercharged",
-    year: 2019, price: 95000, mileage: 42000, bodyType: "SUV", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Indus Silver",
-    condition: "USED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 518, mpgCity: 14, mpgHighway: 19, engineInfo: "5.0L Supercharged V8",
-    features: ["Sport Suspension", "Panoramic Roof", "Meridian Sound System", "Heated Leather Seats", "Terrain Response 2"],
-    images: ["/vehicles/rr-sport-1.jpg", "/vehicles/rr-sport-2.jpg", "/vehicles/rr-sport-3.jpg", "/vehicles/rr-sport-4.jpg", "/vehicles/rr-sport-5.jpg", "/vehicles/rr-sport-6.jpg", "/vehicles/rr-sport-7.jpg", "/vehicles/rr-sport-8.jpg"],
-  },
-  {
-    id: "v3", slug: "2025-toyota-land-cruiser-prado", make: "Toyota", model: "Land Cruiser Prado", trim: "VX",
-    year: 2025, price: 72000, mileage: 0, bodyType: "SUV", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "FOUR_WD", exteriorColor: "White / Black Roof",
-    condition: "NEW", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 326, mpgCity: 18, mpgHighway: 24, engineInfo: "2.8L Turbo Diesel / 2.4L Turbo",
-    features: ["Multi-Terrain Select", "Crawl Control", "Panoramic Sunroof", "Toyota Safety Sense", "Premium Audio"],
-    images: ["/vehicles/lc-prado-1.jpg", "/vehicles/lc-prado-2.jpg", "/vehicles/lc-prado-3.jpg", "/vehicles/lc-prado-4.jpg", "/vehicles/lc-prado-5.jpg", "/vehicles/lc-prado-6.jpg"],
-  },
-  {
-    id: "v4", slug: "2023-land-rover-defender-110", make: "Land Rover", model: "Defender 110", trim: "X-Dynamic SE",
-    year: 2023, price: 88500, mileage: 12400, bodyType: "SUV", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Fuji White",
-    condition: "USED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 395, mpgCity: 17, mpgHighway: 22, engineInfo: "3.0L Turbocharged I6 MHEV",
-    features: ["Off-Road Pack", "Air Suspension", "3D Surround Camera", "Meridian Sound", "Panoramic Roof"],
-    images: ["/vehicles/converted/IMG_3452.jpg", "/vehicles/converted/IMG_3461.jpg"],
-  },
-  {
-    id: "v5", slug: "2023-dodge-charger-srt-hellcat", make: "Dodge", model: "Charger", trim: "SRT Hellcat Widebody",
-    year: 2023, price: 82900, mileage: 6800, bodyType: "SEDAN", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "RWD", exteriorColor: "Yellow / Go Mango",
-    condition: "USED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 717, mpgCity: 12, mpgHighway: 21, engineInfo: "6.2L Supercharged HEMI V8",
-    features: ["Widebody Package", "Brembo Brakes", "Laguna Leather Seats", "Harman Kardon Audio", "Launch Control"],
-    images: [
-      "/vehicles/converted/IMG_3661.jpg",
-      "/vehicles/converted/IMG_3662.jpg",
-      "/vehicles/converted/IMG_3663.jpg",
-      "/vehicles/converted/IMG_3664.jpg",
-      "/vehicles/converted/IMG_3666.jpg",
-      "/vehicles/converted/IMG_3667.jpg",
-      "/vehicles/converted/IMG_3668.jpg",
-      "/vehicles/converted/IMG_3669.jpg",
-      "/vehicles/converted/IMG_3670.jpg",
-    ],
-  },
-  {
-    id: "v6", slug: "2022-ram-1500-trx", make: "RAM", model: "1500", trim: "TRX 4x4",
-    year: 2022, price: 89900, mileage: 15300, bodyType: "TRUCK", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "FOUR_WD", exteriorColor: "Diamond Black Crystal",
-    condition: "USED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 702, mpgCity: 10, mpgHighway: 14, engineInfo: "6.2L Supercharged HEMI V8",
-    features: ["Bilstein Black Hawk shocks", "TRX Level 2 Group", "Head-Up Display", "Harman Kardon Sound", "Panoramic Sunroof"],
-    images: [
-      "/vehicles/converted/IMG_3676.jpg",
-      "/vehicles/converted/IMG_3677.jpg",
-      "/vehicles/converted/IMG_3678.jpg",
-      "/vehicles/converted/IMG_3681.jpg",
-      "/vehicles/converted/IMG_3682.jpg",
-    ],
-  },
-  {
-    id: "v7", slug: "2024-acura-mdx-aspec", make: "Acura", model: "MDX", trim: "A-Spec Package",
-    year: 2024, price: 61500, mileage: 4200, bodyType: "SUV", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Platinum White Pearl",
-    condition: "CERTIFIED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 290, mpgCity: 19, mpgHighway: 25, engineInfo: "3.5L V6",
-    features: ["Super Handling AWD", "ELS Studio 3D Sound", "Milano Leather Seats", "Panoramic Moonroof", "A-Spec Styling"],
-    images: [
-      "/vehicles/converted/IMG_3684.jpg",
-      "/vehicles/converted/IMG_3686.jpg",
-      "/vehicles/converted/IMG_3688.jpg",
-    ],
-  },
-  {
-    id: "v8", slug: "2023-mercedes-amg-g63", make: "Mercedes-Benz", model: "G-Class", trim: "AMG G 63",
-    year: 2023, price: 198000, mileage: 9100, bodyType: "SUV", fuelType: "GASOLINE",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Polar White",
-    condition: "CERTIFIED", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 577, mpgCity: 13, mpgHighway: 16, engineInfo: "4.0L V8 Biturbo",
-    features: ["AMG Night Package", "Red Quilted Leather", "Burmester Surround Sound", "Carbon Fiber Trim", "AMG Performance Exhaust"],
-    images: [
-      "/vehicles/converted/IMG_3726.jpg",
-      "/vehicles/converted/IMG_3727.jpg",
-      "/vehicles/converted/IMG_3728.jpg",
-      "/vehicles/converted/IMG_3729.jpg",
-      "/vehicles/converted/IMG_3730.jpg",
-    ],
-  },
-  {
-    id: "v9", slug: "2024-honda-crv-hybrid-sport-touring", make: "Honda", model: "CR-V Hybrid", trim: "Sport Touring AWD",
-    year: 2024, price: 41200, mileage: 2500, bodyType: "SUV", fuelType: "HYBRID",
-    transmission: "AUTOMATIC", drivetrain: "AWD", exteriorColor: "Canyon River Blue",
-    condition: "NEW", status: "AVAILABLE", isNewArrival: true, isPriceDrop: false,
-    horsepower: 204, mpgCity: 40, mpgHighway: 34, engineInfo: "2.0L 4-Cylinder Hybrid",
-    features: ["Bose Premium Audio", "Leather Seats w/ Orange Stitching", "Hands-Free Power Tailgate", "Honda Sensing", "Wireless Apple CarPlay"],
-    images: [
-      "/vehicles/converted/IMG_3824.jpg",
-      "/vehicles/converted/IMG_3823.jpg",
-      "/vehicles/converted/IMG_3830.jpg",
-      "/vehicles/converted/IMG_3833.jpg",
-      "/vehicles/converted/IMG_3817.jpg",
-      "/vehicles/converted/IMG_3820.jpg",
-      "/vehicles/converted/IMG_3821.jpg",
-      "/vehicles/converted/IMG_3822.jpg",
-    ],
-  },
-];
+// Map the central data store to VehicleCardData shape
+const VEHICLES: VehicleCardData[] = ALL_VEHICLES.map((v) => ({
+  ...v,
+  isPriceDrop: v.isPriceDrop ?? false,
+})) as VehicleCardData[];
 
 function filterVehicles(vehicles: VehicleCardData[], searchParams: Record<string, string | string[] | undefined>) {
   const filters = parseFilters(searchParams);
@@ -174,7 +61,7 @@ export function InventoryContent() {
   const [, startTransition] = useTransition();
 
   const params = Object.fromEntries(searchParams.entries());
-  const { filtered, filters } = filterVehicles(DEMO_VEHICLES, params);
+  const { filtered, filters } = filterVehicles(VEHICLES, params);
 
   const [searchVal, setSearchVal] = useState(filters.q || "");
 
@@ -200,7 +87,7 @@ export function InventoryContent() {
     handleSearchSubmit("");
   };
 
-  const makes = [...new Set(DEMO_VEHICLES.map((v) => v.make))].sort();
+  const makes = [...new Set(VEHICLES.map((v) => v.make))].sort();
   const activeFilterCount = [
     filters.make,
     filters.bodyType,

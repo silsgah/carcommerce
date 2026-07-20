@@ -1,4 +1,4 @@
-// Inventory filter utilities — parses URL search params into Prisma where clauses
+// Inventory filter utilities — parses URL search params into filter objects
 // and generates filter options from the database
 
 export interface InventoryFilters {
