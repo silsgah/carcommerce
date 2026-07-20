@@ -14,7 +14,21 @@ export default function AboutPage() {
     <div className="pt-24 pb-20 bg-surface min-h-screen">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 space-y-16">
         {/* Hero Section */}
-        <div className="relative rounded-3xl overflow-hidden min-h-[45vh] flex items-center p-8 sm:p-12 lg:p-16 border border-border/60 bg-gradient-to-br from-black via-zinc-900 to-emerald-950 text-white shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden min-h-[45vh] flex items-center p-8 sm:p-12 lg:p-16 border border-border/60 text-white shadow-2xl">
+          {/* Background Car Image & Overlays */}
+          <div className="absolute inset-0">
+            <Image
+              src="/vehicles/hero-bg.jpg"
+              alt="AnyCargh Luxury Showroom & Fleet"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-zinc-950/90 to-emerald-950/80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          </div>
+
           <div className="relative z-10 max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-xs font-semibold text-emerald-300 uppercase tracking-wider">
               ✦ About AnyCargh

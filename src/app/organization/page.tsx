@@ -70,8 +70,21 @@ export default function OrganizationPage() {
     <div className="pt-24 pb-20 bg-surface min-h-screen">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 space-y-16">
         {/* Hero Banner */}
-        <section className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-accent-950 text-white p-8 sm:p-12 lg:p-16 border border-brand-800 shadow-2xl">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent-500/20 via-transparent to-transparent pointer-events-none" />
+        <section className="relative rounded-3xl overflow-hidden text-white p-8 sm:p-12 lg:p-16 border border-brand-800 shadow-2xl">
+          {/* Background Car Image & Overlays */}
+          <div className="absolute inset-0">
+            <Image
+              src="/vehicles/converted/IMG_3726.jpg"
+              alt="AnyCargh Corporate Fleet"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/90 to-brand-950/75" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent" />
+          </div>
+
           <div className="relative z-10 max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-accent-300">
               <Sparkles className="w-3.5 h-3.5" />
