@@ -58,32 +58,37 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-xs border-b border-zinc-200"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        headerBg
+          ? "bg-white/95 dark:bg-black/90 backdrop-blur-md shadow-xs border-b border-border/50 text-foreground"
+          : "bg-transparent text-white"
+      )}
     >
       {/* Top bar */}
       <div
         className={cn(
-          "hidden lg:block transition-all duration-300 overflow-hidden border-b border-zinc-100 bg-zinc-50/80",
-          scrolled ? "max-h-0 opacity-0 py-0" : "max-h-10 opacity-100 py-1.5"
+          "hidden lg:block transition-all duration-300 overflow-hidden border-b border-border/20",
+          headerBg ? "max-h-0 opacity-0 py-0" : "max-h-10 opacity-100 py-1.5"
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-xs text-zinc-600">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 font-medium text-zinc-700">
-              <Phone className="h-3.5 w-3.5 text-emerald-600" />
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-xs">
+          <div className={cn("flex items-center gap-6", isHome && !scrolled ? "text-white/80" : "text-text-muted")}>
+            <span className="flex items-center gap-1.5 font-medium">
+              <Phone className="h-3.5 w-3.5 text-emerald-500" />
               055 030 5555
             </span>
-            <span className="flex items-center gap-1.5 text-zinc-600">
-              <MapPin className="h-3.5 w-3.5 text-emerald-600" />
+            <span className="flex items-center gap-1.5">
+              <MapPin className="h-3.5 w-3.5 text-emerald-500" />
               Ashale Botwe, Accra (near East Legon Hills)
             </span>
           </div>
-          <div className="flex items-center gap-4 text-zinc-600">
-            <Link href="/financing" className="hover:text-emerald-600 transition-colors">
+          <div className={cn("flex items-center gap-4", isHome && !scrolled ? "text-white/80" : "text-text-muted")}>
+            <Link href="/financing" className="hover:text-emerald-500 transition-colors">
               Financing Calculator
             </Link>
             <span>|</span>
-            <Link href="/organization" className="hover:text-emerald-600 transition-colors">
+            <Link href="/organization" className="hover:text-emerald-500 transition-colors">
               Leadership & Team
             </Link>
           </div>
@@ -95,7 +100,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-18">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 overflow-hidden rounded-xl shadow-xs border border-zinc-200 group-hover:scale-105 transition-transform bg-white shrink-0 p-0.5">
+            <div className="relative w-10 h-10 overflow-hidden rounded-xl shadow-md border border-white/20 group-hover:scale-105 transition-transform bg-white shrink-0 p-0.5">
               <Image
                 src="/logo.jpg"
                 alt="AnyCargh Logo"
@@ -105,10 +110,20 @@ export function Header() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-extrabold tracking-tight leading-none font-heading text-black">
-                AnyCar<span className="text-emerald-600">gh</span>
+              <span
+                className={cn(
+                  "text-xl font-extrabold tracking-tight leading-none font-heading",
+                  isHome && !scrolled ? "text-white" : "text-black dark:text-white"
+                )}
+              >
+                AnyCar<span className="text-emerald-500">gh</span>
               </span>
-              <span className="text-[9px] uppercase tracking-[0.18em] font-bold leading-none mt-1 text-zinc-600">
+              <span
+                className={cn(
+                  "text-[9px] uppercase tracking-[0.18em] font-semibold leading-none mt-1",
+                  isHome && !scrolled ? "text-white/80" : "text-muted-foreground"
+                )}
+              >
                 Sales · Rental · Importation
               </span>
             </div>
@@ -122,8 +137,8 @@ export function Header() {
               className={cn(
                 "px-3.5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all",
                 pathname === "/"
-                  ? "text-emerald-600 font-extrabold"
-                  : "text-zinc-700 hover:text-black hover:bg-zinc-100"
+                  ? isHome && !scrolled ? "text-white font-extrabold" : "text-emerald-600 dark:text-emerald-400 font-extrabold"
+                  : isHome && !scrolled ? "text-white/80 hover:text-white" : "text-text-secondary hover:text-black dark:hover:text-white"
               )}
             >
               HOME
@@ -135,8 +150,8 @@ export function Header() {
               className={cn(
                 "px-3.5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all",
                 pathname === "/about"
-                  ? "text-emerald-600 font-extrabold"
-                  : "text-zinc-700 hover:text-black hover:bg-zinc-100"
+                  ? isHome && !scrolled ? "text-white font-extrabold" : "text-emerald-600 dark:text-emerald-400 font-extrabold"
+                  : isHome && !scrolled ? "text-white/80 hover:text-white" : "text-text-secondary hover:text-black dark:hover:text-white"
               )}
             >
               ABOUT US
@@ -153,8 +168,8 @@ export function Header() {
                 className={cn(
                   "flex items-center gap-1 px-3.5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all",
                   pathname.startsWith("/services")
-                    ? "text-emerald-600 font-extrabold"
-                    : "text-zinc-700 hover:text-black hover:bg-zinc-100"
+                    ? isHome && !scrolled ? "text-white font-extrabold" : "text-emerald-600 dark:text-emerald-400 font-extrabold"
+                    : isHome && !scrolled ? "text-white/80 hover:text-white" : "text-text-secondary hover:text-black dark:hover:text-white"
                 )}
               >
                 SERVICES
@@ -170,22 +185,22 @@ export function Header() {
                     transition={{ duration: 0.15 }}
                     className="absolute left-0 top-full pt-2 w-72 z-50"
                   >
-                    <div className="p-2 rounded-2xl bg-white shadow-xl border border-zinc-200">
+                    <div className="p-2 rounded-2xl bg-white dark:bg-zinc-900 shadow-2xl border border-border/60">
                       {serviceDropdownItems.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
                           onClick={() => setServicesOpen(false)}
-                          className="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-100 transition-colors group"
+                          className="flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group"
                         >
-                          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                             <item.icon className="w-4 h-4" />
                           </div>
                           <div>
-                            <div className="text-xs font-bold text-zinc-900 group-hover:text-emerald-600 transition-colors">
+                            <div className="text-xs font-bold text-black dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                               {item.label}
                             </div>
-                            <div className="text-[11px] text-zinc-500 line-clamp-1 mt-0.5">
+                            <div className="text-[11px] text-muted-foreground line-clamp-1 mt-0.5">
                               {item.desc}
                             </div>
                           </div>
@@ -203,8 +218,8 @@ export function Header() {
               className={cn(
                 "px-3.5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all",
                 pathname === "/organization"
-                  ? "text-emerald-600 font-extrabold"
-                  : "text-zinc-700 hover:text-black hover:bg-zinc-100"
+                  ? isHome && !scrolled ? "text-white font-extrabold" : "text-emerald-600 dark:text-emerald-400 font-extrabold"
+                  : isHome && !scrolled ? "text-white/80 hover:text-white" : "text-text-secondary hover:text-black dark:hover:text-white"
               )}
             >
               OUR TEAM
@@ -216,8 +231,8 @@ export function Header() {
               className={cn(
                 "px-3.5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all",
                 pathname === "/csr"
-                  ? "text-emerald-600 font-extrabold"
-                  : "text-zinc-700 hover:text-black hover:bg-zinc-100"
+                  ? isHome && !scrolled ? "text-white font-extrabold" : "text-emerald-600 dark:text-emerald-400 font-extrabold"
+                  : isHome && !scrolled ? "text-white/80 hover:text-white" : "text-text-secondary hover:text-black dark:hover:text-white"
               )}
             >
               CSR
@@ -229,8 +244,8 @@ export function Header() {
               className={cn(
                 "px-3.5 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all",
                 pathname === "/contact"
-                  ? "text-emerald-600 font-extrabold"
-                  : "text-zinc-700 hover:text-black hover:bg-zinc-100"
+                  ? isHome && !scrolled ? "text-white font-extrabold" : "text-emerald-600 dark:text-emerald-400 font-extrabold"
+                  : isHome && !scrolled ? "text-white/80 hover:text-white" : "text-text-secondary hover:text-black dark:hover:text-white"
               )}
             >
               CONTACT
@@ -244,7 +259,12 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full text-zinc-700 hover:text-black hover:bg-zinc-100"
+                className={cn(
+                  "rounded-full",
+                  isHome && !scrolled
+                    ? "text-white/80 hover:text-white hover:bg-white/10"
+                    : "text-text-secondary"
+                )}
               >
                 <Search className="h-[18px] w-[18px]" />
               </Button>
@@ -255,14 +275,19 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full relative text-zinc-700 hover:text-black hover:bg-zinc-100"
+                className={cn(
+                  "rounded-full relative",
+                  isHome && !scrolled
+                    ? "text-white/80 hover:text-white hover:bg-white/10"
+                    : "text-text-secondary"
+                )}
               >
                 <Heart className="h-[18px] w-[18px]" />
                 {mounted && favorites.length > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center"
+                    className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 rounded-full bg-emerald-500 text-white text-[10px] font-bold flex items-center justify-center"
                   >
                     {favorites.length}
                   </motion.span>

@@ -33,14 +33,14 @@ const departmentEmails = [
 
 export function Footer() {
   return (
-    <footer className="bg-white text-zinc-900 mt-auto border-t border-zinc-200">
+    <footer className="bg-black text-white mt-auto border-t border-zinc-800">
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 lg:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-5">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 overflow-hidden rounded-xl border border-zinc-200 bg-white p-0.5 shadow-xs">
+              <div className="relative w-10 h-10 overflow-hidden rounded-xl border border-zinc-700 bg-white p-0.5 shadow-md">
                 <Image
                   src="/logo.jpg"
                   alt="AnyCargh Logo"
@@ -49,15 +49,15 @@ export function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-extrabold tracking-tight font-heading text-black">
-                  AnyCar<span className="text-emerald-600">gh</span>
+                <span className="text-xl font-extrabold tracking-tight font-heading text-white">
+                  AnyCar<span className="text-emerald-500">gh</span>
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.18em] font-bold leading-none mt-1 text-zinc-500">
+                <span className="text-[9px] uppercase tracking-[0.18em] font-semibold leading-none mt-1 text-zinc-400">
                   Sales · Rental · Importation
                 </span>
               </div>
             </Link>
-            <p className="text-zinc-600 text-xs leading-relaxed">
+            <p className="text-zinc-400 text-xs leading-relaxed">
               AnyCargh delivers unparalleled vehicle sales, reliable rentals, and seamless importation across Ghana. Discover transparency and certified quality tailored to your journey.
             </p>
             <div className="flex items-center gap-3">
@@ -66,7 +66,7 @@ export function Footer() {
                 href="https://facebook.com/share/188FXXC1b5"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-100 hover:bg-emerald-600 flex items-center justify-center transition-colors text-zinc-700 hover:text-white border border-zinc-200"
+                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-emerald-600 flex items-center justify-center transition-colors text-zinc-300 hover:text-white border border-zinc-800"
                 aria-label="Facebook"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
@@ -76,7 +76,7 @@ export function Footer() {
                 href="https://instagram.com/anycar_gh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-100 hover:bg-emerald-600 flex items-center justify-center transition-colors text-zinc-700 hover:text-white border border-zinc-200"
+                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-emerald-600 flex items-center justify-center transition-colors text-zinc-300 hover:text-white border border-zinc-800"
                 aria-label="Instagram"
               >
                 <svg className="h-4 w-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -86,7 +86,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-4 font-heading">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4 font-heading">
               Quick Links
             </h3>
             <ul className="space-y-2.5">
@@ -94,7 +94,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-xs text-zinc-600 hover:text-black transition-colors font-medium"
+                    className="text-xs text-zinc-400 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -105,14 +105,14 @@ export function Footer() {
 
           {/* Department Emails */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-4 font-heading">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4 font-heading">
               Department Emails
             </h3>
             <ul className="space-y-3">
               {departmentEmails.map((item) => (
                 <li key={item.dept} className="text-xs">
-                  <div className="text-zinc-500 font-semibold">{item.dept}</div>
-                  <a href={`mailto:${item.email}`} className="text-zinc-700 hover:text-emerald-600 font-mono text-[11px] transition-colors">
+                  <div className="text-zinc-500 font-medium">{item.dept}</div>
+                  <a href={`mailto:${item.email}`} className="text-zinc-300 hover:text-emerald-400 font-mono text-[11px] transition-colors">
                     {item.email}
                   </a>
                 </li>
@@ -122,44 +122,44 @@ export function Footer() {
 
           {/* Contact Details */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-4 font-heading">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4 font-heading">
               Head Office
             </h3>
-            <ul className="space-y-3 text-xs text-zinc-600">
+            <ul className="space-y-3 text-xs text-zinc-400">
               <li className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
                 <span>Ashale Botwe, Accra (near East Legon Hills)</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-emerald-600 shrink-0" />
-                <a href="tel:0550305555" className="hover:text-black transition-colors font-medium">
+                <Phone className="h-4 w-4 text-emerald-500 shrink-0" />
+                <a href="tel:0550305555" className="hover:text-white transition-colors">
                   055 030 5555
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Globe className="h-4 w-4 text-emerald-600 shrink-0" />
-                <a href="https://anycarghana.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors font-medium">
+                <Globe className="h-4 w-4 text-emerald-500 shrink-0" />
+                <a href="https://anycarghana.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                   anycarghana.com
                 </a>
               </li>
               <li className="flex items-center gap-3 pt-2">
-                <Clock className="h-4 w-4 text-emerald-600 shrink-0" />
+                <Clock className="h-4 w-4 text-emerald-500 shrink-0" />
                 <span>Mon-Fri: 9AM-6PM | Sat: 9AM-4PM</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <Separator className="my-10 bg-zinc-200" />
+        <Separator className="my-10 bg-zinc-800" />
 
         {/* Bottom copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <p>© {new Date().getFullYear()} AnyCargh. All rights reserved. Cars for All Budgets.</p>
           <div className="flex items-center gap-6 text-[11px]">
-            <Link href="/privacy" className="hover:text-zinc-800 transition-colors">
+            <Link href="/privacy" className="hover:text-zinc-300 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-zinc-800 transition-colors">
+            <Link href="/terms" className="hover:text-zinc-300 transition-colors">
               Terms of Service
             </Link>
           </div>
