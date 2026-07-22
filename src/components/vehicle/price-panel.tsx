@@ -365,7 +365,7 @@ export function PricePanel({ vehicle }: PricePanelProps) {
       <div className="border-t pt-4 flex gap-3 text-xs text-muted-foreground items-start">
         <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-500 shrink-0 mt-0.5" />
         <div>
-          <p className="font-semibold text-foreground">AutoLot Certified Guarantee</p>
+          <p className="font-semibold text-foreground">AnyCargh Certified Guarantee</p>
           <p className="mt-0.5 leading-relaxed">
             Includes a 12-Month / 12,000-Mile Limited Warranty, Carfax History Report, and a 150-Point inspection.
           </p>

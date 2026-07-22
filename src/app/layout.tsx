@@ -20,11 +20,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "AutoLot — Premium Vehicles, Transparent Pricing",
-    template: "%s | AutoLot",
+    default: "AnyCargh — Sales · Rental · Importation",
+    template: "%s | AnyCargh",
   },
   description:
-    "Browse our curated selection of new and pre-owned vehicles. Transparent pricing, certified quality, and exceptional service at AutoLot.",
+    "AnyCargh delivers unparalleled vehicle sales, reliable rentals, and seamless importation across Ghana. Transparent pricing, certified quality, and exceptional service.",
   keywords: [
     "car dealership",
     "used cars",
@@ -32,11 +32,13 @@ export const metadata: Metadata = {
     "certified pre-owned",
     "auto dealer",
     "buy car online",
+    "Ghana car sales",
+    "AnyCargh",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "AutoLot",
+    siteName: "AnyCargh",
   },
   icons: {
     icon: "/logo.jpg",

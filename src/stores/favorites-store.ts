@@ -39,7 +39,7 @@ export const useFavoritesStore = create<FavoritesState>()(
       clearFavorites: () => set({ favorites: [] }),
     }),
     {
-      name: "autolot-favorites",
+      name: "anycargh-favorites",
     }
   )
 );

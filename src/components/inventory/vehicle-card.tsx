@@ -130,9 +130,9 @@ export function VehicleCard({ vehicle, view = "grid", index = 0 }: VehicleCardPr
         transition={{ delay: index * 0.05 }}
       >
         <Link href={`/inventory/${vehicle.slug}`}>
-          <div className="group bg-card rounded-2xl border border-border/60 hover:border-border-hover hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col sm:flex-row">
+          <div className="group bg-white rounded-2xl border border-zinc-200 hover:border-zinc-300 hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col sm:flex-row">
             {/* Image */}
-            <div className="relative sm:w-72 lg:w-80 h-48 sm:h-auto shrink-0 overflow-hidden">
+            <div className="relative sm:w-72 lg:w-80 h-48 sm:h-auto shrink-0 overflow-hidden bg-white">
               <Image
                 src={vehicle.images[0] || "/placeholder-car.jpg"}
                 alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
@@ -256,9 +256,9 @@ export function VehicleCard({ vehicle, view = "grid", index = 0 }: VehicleCardPr
       transition={{ delay: index * 0.05 }}
     >
       <Link href={`/inventory/${vehicle.slug}`}>
-        <div className="group bg-card rounded-2xl border border-border/60 hover:border-border-hover hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div className="group bg-white rounded-2xl border border-zinc-200 hover:border-zinc-300 hover:shadow-lg transition-all duration-300 overflow-hidden">
           {/* Image */}
-          <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden bg-white">
             <Image
               src={vehicle.images[0] || "/placeholder-car.jpg"}
               alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}

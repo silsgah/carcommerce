@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-    description: `Buy a ${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim || ""} with ${vehicle.mileage.toLocaleString()} miles for ${formatPrice(vehicle.price)} at AutoLot.`,
+    description: `Buy a ${vehicle.year} ${vehicle.make} ${vehicle.model} ${vehicle.trim || ""} with ${vehicle.mileage.toLocaleString()} miles for ${formatPrice(vehicle.price)} at AnyCargh.`,
   };
 }
 

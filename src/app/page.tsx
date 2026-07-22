@@ -50,9 +50,9 @@ export default function HomePage() {
   return (
     <>
       {/* ────── Hero ────── */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-white pt-24 pb-16">
+        {/* Background Subtle Backdrop */}
+        <div className="absolute inset-0 opacity-15">
           <Image
             src="/vehicles/hero-bg.jpg"
             alt="Luxury car showroom"
@@ -61,22 +61,21 @@ export default function HomePage() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-950/70 to-brand-950/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-white/70" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 lg:px-6 py-32 lg:py-40">
+        <div className="relative max-w-7xl mx-auto px-4 lg:px-6 py-16 lg:py-24">
           <div className="max-w-2xl">
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 mb-6 text-xs font-semibold uppercase tracking-wider">
+            <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200 mb-6 text-xs font-bold uppercase tracking-wider">
               ✦ Cars for All Budgets
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-heading font-extrabold text-white leading-[1.1] tracking-tight">
-              AnyCar<span className="text-emerald-500">gh</span>
-              <span className="block mt-2 text-2xl sm:text-4xl lg:text-5xl font-bold text-emerald-400">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-heading font-extrabold text-black leading-[1.1] tracking-tight">
+              AnyCar<span className="text-emerald-600">gh</span>
+              <span className="block mt-2 text-2xl sm:text-4xl lg:text-5xl font-bold text-zinc-900">
                 Sales · Rental · Importation
               </span>
             </h1>
-            <p className="mt-6 text-base sm:text-lg text-zinc-300 leading-relaxed max-w-xl">
+            <p className="mt-6 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-xl font-normal">
               AnyCargh delivers unparalleled vehicle sales, reliable rentals, and seamless importation across Ghana. Discover transparency and certified quality tailored to your journey.
             </p>
 
@@ -84,7 +83,7 @@ export default function HomePage() {
               <Link href="/inventory">
                 <Button
                   size="lg"
-                  className="bg-accent-500 hover:bg-accent-600 text-white rounded-full px-8 shadow-xl shadow-accent-500/25 hover:shadow-accent-500/40 transition-all text-base"
+                  className="bg-black hover:bg-zinc-800 text-white rounded-full px-8 shadow-lg font-bold text-base transition-all"
                 >
                   Browse Inventory
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -94,7 +93,7 @@ export default function HomePage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="rounded-full px-8 border-white/40 text-white bg-black/60 hover:bg-white hover:text-black font-semibold transition-all text-base backdrop-blur-xs shadow-md"
+                  className="rounded-full px-8 border-zinc-300 text-zinc-800 bg-white hover:bg-zinc-100 font-semibold transition-all text-base shadow-xs"
                 >
                   <Calculator className="mr-2 h-4 w-4" />
                   Payment Calculator
@@ -103,13 +102,13 @@ export default function HomePage() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-14 pt-8 border-t border-white/10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-14 pt-8 border-t border-zinc-200">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-2xl lg:text-3xl font-heading font-bold text-white">
+                  <p className="text-2xl lg:text-3xl font-heading font-extrabold text-black">
                     {stat.value}
                   </p>
-                  <p className="text-xs text-brand-300 mt-0.5">
+                  <p className="text-xs text-zinc-500 font-medium mt-0.5">
                     {stat.label}
                   </p>
                 </div>
@@ -237,7 +236,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground">
-              Why Choose AutoLot
+              Why Choose AnyCargh
             </h2>
             <p className="text-muted-foreground mt-3 max-w-md mx-auto">
               We&apos;re committed to making your car buying experience exceptional

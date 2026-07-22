@@ -54,7 +54,7 @@ export const useCompareStore = create<CompareState>()(
       clearCompare: () => set({ vehicles: [] }),
     }),
     {
-      name: "autolot-compare",
+      name: "anycargh-compare",
     }
   )
 );

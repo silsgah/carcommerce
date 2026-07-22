@@ -29,7 +29,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
   return (
     <div className="space-y-4">
       {/* Main Image Viewport */}
-      <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-muted group border border-border/50">
+      <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-white group border border-zinc-200 shadow-xs">
         <Image
           src={items[activeIndex]}
           alt={`${title} - view ${activeIndex + 1}`}
